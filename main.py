@@ -9,18 +9,22 @@ def greeting():
 
 @app_bp.route('/ipinfo', methods=['GET'])
 def ipInfo():
-    clientIP = request.remote_addr
-    ipinfo_obj = Ipinfo(clientIP) 
-    ipinfo = ipinfo_obj.getInfo()
-
-    return jsonify({"ip": ipinfo['ip'], "city": ipinfo['city'], "country": ipinfo['country']}), 200
+    try:
+        clientIP = request.remote_addr
+        ipinfo_obj = Ipinfo(clientIP) 
+        ipinfo = ipinfo_obj.getInfo()
+        return jsonify({"ip": ipinfo['ip'], "city": ipinfo['city'], "country": ipinfo['country']}), 200
+    except Exception as error:
+        return str(error), 500
 
 @app_bp.route('/ipinfo/<ip>', methods=['GET'])
 def externalipInfo(ip):
-    externalipInfo = Ipinfo(ip)
-    ipinfo = externalipInfo.getInfo()
-
-    return jsonify({"ip": ipinfo['ip'], "city": ipinfo['city'], "country": ipinfo['country']}), 200
+    try: 
+        externalipInfo = Ipinfo(ip)
+        ipinfo = externalipInfo.getInfo()
+        return jsonify({"ip": ipinfo['ip'], "city": ipinfo['city'], "country": ipinfo['country']}), 200
+    except Exception as error:
+        return str(error), 500
 
 if __name__ == "__main__":
     app = Flask(__name__)
