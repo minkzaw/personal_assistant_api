@@ -10,8 +10,7 @@ def greeting():
 @app_bp.route('/ipinfo', methods=['GET'])
 def ipInfo():
     try:
-        clientIP = request.remote_addr
-        ipinfo_obj = Ipinfo(clientIP) 
+        ipinfo_obj = Ipinfo(request.remote_addr)
         ipinfo = ipinfo_obj.getInfo()
         return jsonify({"ip": ipinfo['ip'], "city": ipinfo['city'], "country": ipinfo['country']}), 200
     except Exception as error:
@@ -20,8 +19,8 @@ def ipInfo():
 @app_bp.route('/ipinfo/<ip>', methods=['GET'])
 def externalipInfo(ip):
     try: 
-        externalipInfo = Ipinfo(ip)
-        ipinfo = externalipInfo.getInfo()
+        externalipinfo_obj = Ipinfo(ip)
+        ipinfo = externalipinfo_obj.getInfo()
         return jsonify({"ip": ipinfo['ip'], "city": ipinfo['city'], "country": ipinfo['country']}), 200
     except Exception as error:
         return str(error), 500
