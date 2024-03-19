@@ -22,7 +22,7 @@ To get started with the API, you can use the following endpoints:
 
 #### Get Information about IP Address
 
-Endpoint: `/ipinfo`
+Endpoint: `/ipinfo/<ip>`
 
 Method: `GET`
 
@@ -37,9 +37,4 @@ Response:
   "ip": "8.8.8.8",
   "city": "Mountain View",
   "country": "US"
-}
-
-GET /portchecker?ip=8.8.8.8&port=80
-{
-  "message": "Port 80 on 8.8.8.8 is open."
 }
