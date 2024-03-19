@@ -3,7 +3,13 @@
 ## Docker build step to use as container image
 
 ```sh
-docker build -t --no-cache {name} .
+docker build -t --no-cache {image_name} .
+```
+
+## Docker container run from the built image.
+
+```sh
+docker run -d --name assistant_api -p 8080:8080 {image_name}
 ```
 
 ## Getting Started
