@@ -9,7 +9,7 @@ docker build -t {image_name} --no-cache .
 ```
 
 ```sh
-docker run -d --rm --name assistant_api -p 8080:8080 {image_name}
+docker run -d --rm --name assistant_api -p 8000:8000 {image_name}
 ```
 
 ## Getting Started
