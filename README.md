@@ -55,13 +55,13 @@ Checks if a port is open on a specified IP address.
 
 **Request:**
 ```http
-GET /portchecker?ip=8.8.8.8&port=80
+GET /portchecker?ip=8.8.8.8&port=53
 ```
 
 **Response:**
 ```json
 {
-  "message": "Port 80 is open on IP 8.8.8.8"
+  "message": "Port 53 is open on IP 8.8.8.8"
 }
 ```
 
