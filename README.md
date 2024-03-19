@@ -22,7 +22,7 @@ To get started with the API, you can use the following endpoints:
 
 #### Get Information about IP Address
 
-Endpoint: `/ipinfo/<ip>`
+Endpoint: `/ipinfo/8.8.8.8`
 
 Method: `GET`
 
