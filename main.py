@@ -37,7 +37,7 @@ def local_portChecker():
     except ValueError:
         return "Port must be an integer.", 400        
     checker = Checkport(ip=ip, port=port)
-    return checker.portChecker()
+    return checker.portChecker(), 200
 
 if __name__ == "__main__":
     app = Flask(__name__)
