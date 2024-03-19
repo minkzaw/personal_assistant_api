@@ -31,13 +31,13 @@ def local_portChecker():
     ip = request.args.get('ip')
     port = request.args.get('port')
     if ip is None or port is None:
-        return "Please provide both 'ip' and 'port' parameters in the endpoint.", 400
+        return jsonify({"Please provide both 'ip' and 'port' parameters in the endpoint."}), 400
     try:
         port = int(port)
     except ValueError:
-        return "Port must be an integer.", 400        
+        return jsonify({"Port must be an integer."}), 400        
     checker = Checkport(ip=ip, port=port)
-    return checker.portChecker(), 200
+    return jsonify({"message": checker.portChecker()}), 200
 
 if __name__ == "__main__":
     app = Flask(__name__)
