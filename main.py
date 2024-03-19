@@ -1,5 +1,6 @@
 from flask import Flask, Blueprint, request, jsonify
 from networkinfo import Ipinfo
+from portchecker import Checkport
 
 app_bp = Blueprint('api', __name__, url_prefix='/api')
 
@@ -24,6 +25,26 @@ def externalipInfo(ip):
         return jsonify({"ip": ipinfo['ip'], "city": ipinfo['city'], "country": ipinfo['country']}), 200
     except Exception as error:
         return str(error), 500
+    
+@app_bp.route('/portchecker', methods=['GET'])
+def local_portChecker():
+    ip = request.args.get('ip')
+    port = request.args.get('port')
+
+    if ip is None:
+        return jsonify({f"Please specify IP as parameter"}), 404
+    
+    if port is None:
+        return jsonify({f"Please specify IP as parameter"}), 404
+    
+    else:
+        try:
+            port = int(port)
+        except ValueError:
+            return jsonify({f"Port must be integer."})
+        
+        checker = Checkport(ip=ip, port=port)
+        return checker.portChecker()
 
 if __name__ == "__main__":
     app = Flask(__name__)
