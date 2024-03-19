@@ -14,11 +14,9 @@ class Checkport:
                 session.connect((self.ip, self.port))
                 return f"The {self.port} on {self.ip} is open."
             else:
-                return "Please specify IP and Port."
-                
+                return "Please specify IP and Port."                
         except SocketError as error:
-            return f"The {self.port} on {self.ip} is not reachable."
-        
+            return f"The {self.port} on {self.ip} is not reachable."        
         finally:
             if session is not None:
                 session.close()  # Close session if it's not None
