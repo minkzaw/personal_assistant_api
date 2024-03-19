@@ -5,7 +5,7 @@
 ### Docker build step to use as container image
 
 ```sh
-docker build -t --no-cache {image_name} .
+docker build -t {image_name} --no-cache.
 ```
 
 ```sh
