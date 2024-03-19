@@ -24,4 +24,3 @@ class Ipinfo:
             return ipinfo
         except Exception as error:
             return str(error)
-
