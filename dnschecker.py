@@ -6,6 +6,6 @@ class DNSChecker:
     def dnslookUp(self):
         try:
             ip_address = socket.gethostbyname(self.dnsName)
-            return f"The {self.dnsName} has record {ip_address}."
+            return f"DNS lookup result for {self.dnsName}: {ip_address}"
         except Exception as error:
             return str(error)

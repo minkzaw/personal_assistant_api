@@ -12,11 +12,11 @@ class Checkport:
                 session = socket(AF_INET, SOCK_STREAM)
                 session.settimeout(2)
                 session.connect((self.ip, self.port))
-                return f"The {self.port} on {self.ip} is reachable."
+                return f"Port {self.port} is open on IP {self.ip}"
             else:
                 return "Please specify IP and Port."                
         except SocketError as error:
-            return f"The {self.port} on {self.ip} is unreachable."        
+            return f"Port {self.port} is not open on IP {self.ip}"        
         finally:
             if session is not None:
                 session.close()  # Close session if it's not None
