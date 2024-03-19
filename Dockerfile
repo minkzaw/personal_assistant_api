@@ -1,6 +1,6 @@
 from python
 
-LABEL MAINTAINER="minkhantzaw.personal@gmail.com" 
+LABEL org.opencontainers.image.authors="minkhantzaw.personal@gmail.com"
 
 COPY . /app/
 
