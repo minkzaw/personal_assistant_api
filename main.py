@@ -30,15 +30,12 @@ def externalipInfo(ip):
 def local_portChecker():
     ip = request.args.get('ip')
     port = request.args.get('port')
-
     if ip is None or port is None:
         return "Please provide both 'ip' and 'port' parameters in the endpoint.", 400
-
     try:
         port = int(port)
     except ValueError:
-        return "Port must be an integer.", 400
-        
+        return "Port must be an integer.", 400        
     checker = Checkport(ip=ip, port=port)
     return checker.portChecker()
 
