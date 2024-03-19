@@ -2,4 +2,4 @@
 API endpoint for personal assistant written in python
 
 ## Docker build step to use as container image
-docker build -t --no-cache <name> .
+docker build -t --no-cache {name} .
