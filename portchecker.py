@@ -20,7 +20,3 @@ class Checkport:
         finally:
             if session is not None:
                 session.close()  # Close session if it's not None
-
-# Instantiating the class and calling the method correctly
-myTesting = Checkport(ip="8.8.8.8",port=53)
-print(myTesting.portChecker())  # No additional arguments needed here
