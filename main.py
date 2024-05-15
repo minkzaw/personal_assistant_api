@@ -2,6 +2,7 @@ from flask import Flask, Blueprint, request, jsonify
 from networkinfo import Ipinfo
 from portchecker import Checkport
 from dnschecker import DNSChecker
+import os
 
 app_bp = Blueprint('api', __name__, url_prefix='/api')
 
@@ -52,4 +53,7 @@ def dnsChecker():
 if __name__ == "__main__":
     app = Flask(__name__)
     app.register_blueprint(app_bp)
-    app.run(debug=True, host="0.0.0.0", port="8000")
+    host = os.environ.get('HOST', '0.0.0.0')
+    port = int(os.environ.get('PORT', 5000)) 
+    app.run(debug=True, host=host, port=port)
+
