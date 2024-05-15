@@ -53,7 +53,7 @@ def dnsChecker():
 if __name__ == "__main__":
     app = Flask(__name__)
     app.register_blueprint(app_bp)
-    host = os.environ.get('HOST', '0.0.0.0')
-    port = int(os.environ.get('PORT', 5000)) 
+    host = os.environ.get('HOST')
+    port = int(os.environ.get('PORT')) 
     app.run(debug=True, host=host, port=port)
 
