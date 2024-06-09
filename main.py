@@ -27,19 +27,24 @@ def externalipInfo(ip):
         return jsonify({"ip": ipinfo['ip'], "city": ipinfo['city'], "country": ipinfo['country']}), 200
     except Exception as error:
         return str(error), 500
-    
+
 @app_bp.route('/portchecker', methods=['GET'])
 def local_portChecker():
     ip = request.args.get('ip')
     port = request.args.get('port')
     if ip is None or port is None:
-        return jsonify({"Please provide both 'ip' and 'port' parameters in the endpoint."}), 400
+        return jsonify({"error": "Please provide both 'ip' and 'port' parameters in the endpoint."}), 400
     try:
         port = int(port)
     except ValueError:
-        return jsonify({"Port must be an integer."}), 400        
+        return jsonify({"error": "Port must be an integer."}), 400
     checker = Checkport(ip=ip, port=port)
-    return jsonify({"message": checker.portChecker()}), 200
+    try:
+        result = checker.portChecker()
+        return jsonify(result), 200
+    except Exception as error:
+        return jsonify({"error": str(error)}), 500
+
 
 @app_bp.route('/dnschecker', methods=['GET'])
 def dnsChecker():
